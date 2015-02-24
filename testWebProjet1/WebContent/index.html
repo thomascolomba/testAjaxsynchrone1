@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>test 1 ajax</title>
+<script type="text/javascript">
+//c'est la fonction qui va récupérer le texte côté serveur et l'afficher sous le bouton
+function chargerTexte(){
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","MaServlet",false);//ici on indique qu'on va chercher les données en ajax avec la méthode GET, à l'url "MaServlet", et le false c'est pour dire qu'on fait un appel synchrone.
+	xmlhttp.send();//ici on effectue concrètement l'aller-retour serveur (l'appel est bloquant car synchrone).
+	document.getElementById("zoneAffichage").innerHTML=xmlhttp.responseText;//ici on affiche bêtement ce que nous a renvoyé l'ajax dans la balise <p> sous le bouton.
+}
+</script>
+</head>
+<body style='background-color:green;'>
+<div style='width:400px;margin-right:auto;margin-left:auto;border:1px solid #2222dd;border-radius:4px;background-color:white;margin-top:150px;height:500px;text-align:center;padding:30px;'>
+<p>Cliquez sur le bouton pour charger du texte en ajax</p>
+<button onclick='chargerTexte();'>Cliquez-moi</button>
+<br/>
+<p id='zoneAffichage'>
+...
+</p>
+</div>
+<!-- note à moi-même : pour accéder à cette page : http://localhost:8080/testWebProjet1/index.html -->
+</body>
+</html>
